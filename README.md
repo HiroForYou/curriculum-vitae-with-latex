@@ -1,31 +1,35 @@
-# CV de Cristhian Sanchez
+# Cristhian Sanchez's CV
 
-Repositorio del currículum vitae de **Cristhian Sanchez**, Full Stack Developer en AI y Machine Learning Engineer.
+Repository for **Cristhian Sanchez**'s résumé, Full Stack Developer in AI and Machine Learning Engineer.
 
-## Estructura
+## Structure
 
-- [`latex/`](latex/README.md): fuentes LaTeX, recursos y PDF generado.
-- [`infra/`](infra/README.md): Docker Compose y script de compilación.
+- [`latex/`](latex/README.md): LaTeX sources, assets, and the generated PDF.
+- [`infra/`](infra/README.md): Docker Compose setup and the compile script.
 
-## Flujo rápido
+## Quick start
 
-1. Levantar la infraestructura:
+1. Start the infrastructure:
 
 	```powershell
 	cd infra
 	docker compose up -d
 	```
 
-2. Compilar desde la raíz del proyecto:
+2. Compile from the project root:
 
 	```powershell
 	.\infra\compile.ps1 -Clean
 	```
 
-3. Abrir el resultado en [`latex/output/`](latex/output/):
+3. Open the result in [`latex/output/`](latex/output/):
 
 	```text
 	latex/output/sanchez_saune_cristhian_CV.pdf
 	```
 
-La infraestructura utiliza `sharelatex/sharelatex:6.1.1`, `mongo:8.0` y `redis:7.4`. La clase LaTeX se distribuye bajo la [LPPL 1.3c](https://www.latex-project.org/lppl.txt) y el contenido del CV bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
+The infrastructure uses `sharelatex/sharelatex:6.1.1`, `mongo:8.0`, and `redis:7.4`. The LaTeX class is distributed under [LPPL 1.3c](https://www.latex-project.org/lppl.txt) and the CV content under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
+
+## Usage
+
+This project is free to use: anyone is welcome to fork it, reuse the LaTeX template, and adapt it to their own needs.

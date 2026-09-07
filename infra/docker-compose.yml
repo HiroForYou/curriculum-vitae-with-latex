@@ -1,0 +1,67 @@
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: mongo
+    restart: unless-stopped
+    # Overleaf/ShareLaTeX (>=6.x) usa transacciones de Mongo internamente, lo
+    # que exige que Mongo corra como replica set (aunque sea de un solo nodo).
+    # Sin esto, sharelatex falla su chequeo de conexion a los ~60s de cada
+    # arranque y el contenedor entra en un bucle de reinicios.
+    command: ["--replSet", "overleaf"]
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      # Se auto-inicializa la primera vez que corre (volumen nuevo): si
+      # rs.status() falla porque el replica set aun no existe, lo crea usando
+      # el alias de red "mongo" (el mismo host que usa sharelatex para
+      # conectarse). Ya inicializado, solo confirma que sigue sano.
+      test: ["CMD", "mongosh", "--quiet", "--eval", "try { rs.status().ok } catch(e) { rs.initiate({_id: 'overleaf', members: [{_id: 0, host: 'mongo:27017'}]}).ok }"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks:
+      - overleaf
+
+  redis:
+    image: redis:7.4
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks:
+      - overleaf
+
+  sharelatex:
+    image: sharelatex/sharelatex:6.1.1
+    container_name: sharelatex
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "1998:80"
+    environment:
+      OVERLEAF_MONGO_URL: mongodb://mongo/sharelatex
+      OVERLEAF_REDIS_HOST: redis
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+    volumes:
+      - sharelatex_data:/var/lib/overleaf
+    networks:
+      - overleaf
+
+volumes:
+  mongo_data:
+  redis_data:
+  sharelatex_data:
+
+networks:
+  overleaf:
+    name: overleaf_default

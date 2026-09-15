@@ -1,0 +1,60 @@
+% !TEX TS-program = luatex
+% Awesome Source CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% Author:
+% Christophe Roger (Darwiin)
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+% La clase, la foto y las fuentes son compartidas con latex/es/. Se compilan
+% con cwd=latex/ (ver infra/compile.ps1), por eso las rutas son relativas a
+% la raiz de latex/ y no a esta carpeta.
+\documentclass[localFont,alternative]{yaac-another-awesome-cv}
+% Nom en casse mixte : \textsc produit alors de vraies petites capitales.
+\name{Cristhian}{Sanchez}
+\tagline{Machine Learning \& AI Engineer}
+\photo{2.5cm}{darwiin}
+\socialinfo{
+	\linkedin{cristhian-wiki}
+	\github{HiroForYou}
+        \personalWebsite{www.cristhianwiki.com}\\
+	\smartphone{+51 924130271}
+	\email{christiansanchezsaune@gmail.com}\\
+	\address{La Victoria, Lima, Peru}\\
+	% L'age est recalcule a chaque compilation a partir de la date de naissance
+	% et de la date courante du moteur LaTeX (\year/\month/\day) : pas besoin
+	% de mettre a jour ce nombre a la main chaque annee.
+	\infos{June 8, 1998 (\ageinyears{1998}{6}{8} years old)}
+}
+
+\begin{document}
+
+	\makecvheader
+
+	\makecvfooter
+		{\textsc{\the\year}} %\selectlanguage{english}\today
+		{\textsc{Cristhian Sanchez - CV}}
+		{\thepage}
+
+	% Prefijados con 'en/': se compila con cwd=latex/ (la raiz), y kpathsea
+	% no busca en subcarpetas por defecto, asi que \input{section_headline}
+	% a secas no encontraria en/section_headline.tex.
+	\input{v2/en/section_headline}
+	\input{v2/en/section_competences}				% Section compétence
+	\input{v2/en/section_experience_short}		% Section expérience
+	\input{v2/en/section_langues}					% Section langues
+	\input{v2/en/section_scolarite}
+        \input{v2/en/section_cert}
+        \input{v2/en/section_presentations}
+        % Section scholarité
+	%\input{section_interets}				% Section intérêts
+	\input{v2/en/section_projets}
+	\input{v2/en/section_references}
+ % Section références
+
+
+\end{document}

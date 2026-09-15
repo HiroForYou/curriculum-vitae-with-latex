@@ -1,5 +1,7 @@
 # Cristhian Sanchez's CV
 
+*[Leer en español](README.es.md)*
+
 Repository for **Cristhian Sanchez**'s résumé, Full Stack Developer in AI and Machine Learning Engineer.
 
 ## Structure

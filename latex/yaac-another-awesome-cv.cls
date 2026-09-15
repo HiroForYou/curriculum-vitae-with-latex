@@ -168,9 +168,13 @@
     ItalicFont= Source Sans Pro Light Italic]
 }
 {
+  % Ruta relativa al directorio de trabajo de lualatex (la raiz de latex/,
+  % no en/ ni es/): infra/compile.ps1 compila con cwd=latex/ pasando
+  % en/cv.tex o es/cv.tex como argumento, para que hyperref/rerunfilecheck
+  % no choquen con -output-directory apuntando fuera del arbol de cwd.
   \setmainfont{SourceSansPro-Light}[
-    Path = fonts/, 
-    BoldFont = SourceSansPro-Regular, 
+    Path = fonts/,
+    BoldFont = SourceSansPro-Regular,
     ItalicFont = SourceSansPro-LightIt]
 }
 
@@ -447,10 +451,17 @@
 % Render one client inside the description (8th argument) of an \experience.
 % The whole consulting entry stays a single table row, exactly like a regular
 % experience: header row, body row, technology row.
+% Etiqueta "Client" localizable: en/cv.tex usa el valor por defecto (Client);
+% es/cv.tex la redefine a "Cliente" con \renewcommand{\clientlabel}{Cliente}
+% antes del primer \clientblock. Sin esto, el texto quedaba fijo en ingles
+% incluso en la version en espanol (ej. "Client : Koandina - Industria de
+% Bebidas", mezclando idiomas).
+\newcommand{\clientlabel}{Client}
+
 % Usage: \clientblock{<Client name>}{<Client business unit>}{<Achievements>}
 \newcommand{\clientblock}[3]{%
   \par\vspace{\cvclientpresep}
-  \hspace*{1em}\textbf{Client : #1} - \emph{#2}\par
+  \hspace*{1em}\textbf{\clientlabel\ : #1} - \emph{#2}\par
   \vspace{\cvclientpostsep}
   \begingroup
   \setlist[itemize,1]{label=\faAngleRight, itemsep=0.15em, topsep=0.25em, parsep=0pt, leftmargin=2.5em}

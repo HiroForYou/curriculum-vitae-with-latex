@@ -10,6 +10,9 @@
 % Template license:
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
+% La clase, la foto y las fuentes son compartidas con latex/es/. Se compilan
+% con cwd=latex/ (ver infra/compile.ps1), por eso las rutas son relativas a
+% la raiz de latex/ y no a esta carpeta.
 \documentclass[localFont,alternative]{yaac-another-awesome-cv}
 % Nom en casse mixte : \textsc produit alors de vraies petites capitales.
 \name{Cristhian}{Sanchez}
@@ -37,17 +40,20 @@
 		{\textsc{Cristhian Sanchez - CV}}
 		{\thepage}
 
-	\input{section_headline}
-	\input{section_competences}				% Section compétence
-	\input{section_experience_short}		% Section expérience
-	\input{section_langues}					% Section langues
-	\input{section_scolarite}	
-        \input{section_cert}
-        \input{section_presentations}
+	% Prefijados con 'en/': se compila con cwd=latex/ (la raiz), y kpathsea
+	% no busca en subcarpetas por defecto, asi que \input{section_headline}
+	% a secas no encontraria en/section_headline.tex.
+	\input{en/section_headline}
+	\input{en/section_competences}				% Section compétence
+	\input{en/section_experience_short}		% Section expérience
+	\input{en/section_langues}					% Section langues
+	\input{en/section_scolarite}
+        \input{en/section_cert}
+        \input{en/section_presentations}
         % Section scholarité
 	%\input{section_interets}				% Section intérêts
-	\input{section_projets}
-	\input{section_references} 	
+	\input{en/section_projets}
+	\input{en/section_references}
  % Section références
 
 

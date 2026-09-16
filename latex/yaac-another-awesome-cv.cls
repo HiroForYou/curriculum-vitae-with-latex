@@ -445,7 +445,7 @@
 \newcommand\experience[9]{
   \textbf{#1} & \textbf{#2, \textsc{#3}, #4} \hfill \emph{#5, #6} \\[\cvrowheadsep]
   \textbf{#7} & \begin{minipage}[t]{\rightcolumnlength}#8\end{minipage} \\
-              & \rule{0pt}{\cvtagrowheight}\small{\foreach \n in {#9}{\cvtag{\n}}} \\[\cvrowtagsep]
+              & \rule{0pt}{\cvtagrowheight}\small{\foreach \n in {#9}{\cvtag{\n}}}\vspace{\cvrowtagsep} \\
 }
 
 % Render one client inside the description (8th argument) of an \experience.

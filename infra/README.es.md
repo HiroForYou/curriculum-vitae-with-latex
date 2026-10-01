@@ -12,7 +12,7 @@ del mismo editor cloud.
 
 ## Servicios
 
-- `sharelatex/sharelatex:6.1.1`: entorno ShareLaTeX y LuaLaTeX.
+- `sharelatex-full:6.1.1`: se construye desde el `Dockerfile` sobre `sharelatex/sharelatex:6.1.1`, agregando las colecciones de TeX Live que necesita el CV (latexrecommended, latexextra, fontsrecommended, fontsextra, luatex, langspanish, pictures; sin documentación ni fuentes) para que `fontspec` y el resto de paquetes ya vengan instalados. Entorno ShareLaTeX y LuaLaTeX.
 - `mongo:8.0`: base de datos de ShareLaTeX.
 - `redis:7.4`: servicio de cache y colas.
 
@@ -23,6 +23,8 @@ Desde esta carpeta:
 ```powershell
 docker compose up -d
 ```
+
+La primera vez construye la imagen (tarda unos minutos); las siguientes la reutilizan. Para reconstruirla: `docker compose build`.
 
 Comprobar el estado:
 

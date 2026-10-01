@@ -4,10 +4,10 @@ param(
     # <Version>/es/cv.tex; 'both' compila las dos versiones en una sola pasada.
     [ValidateSet('en', 'es', 'both')]
     [string]$Lang = 'en',
-    # Version del CV a compilar: latex/v1/ (por defecto) o latex/v2/. Cada
+    # Version del CV a compilar: latex/v1/ (por defecto), latex/v2/ o latex/v2-alt/. Cada
     # version tiene su propio en/ y es/, pero comparte la clase, fonts/ y
     # darwiin.png en la raiz de latex/.
-    [ValidateSet('v1', 'v2')]
+    [ValidateSet('v1', 'v2', 'v2-alt')]
     [string]$Version = 'v1'
 )
 

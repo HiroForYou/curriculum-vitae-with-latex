@@ -461,7 +461,7 @@
 % Usage: \clientblock{<Client name>}{<Client business unit>}{<Achievements>}
 \newcommand{\clientblock}[3]{%
   \par\vspace{\cvclientpresep}
-  \hspace*{1em}\textbf{\clientlabel\ : #1} - \emph{#2}\par
+  \hspace*{1em}\textbf{\clientlabel: #1} - \emph{#2}\par
   \vspace{\cvclientpostsep}
   \begingroup
   \setlist[itemize,1]{label=\faAngleRight, itemsep=0.15em, topsep=0.25em, parsep=0pt, leftmargin=2.5em}

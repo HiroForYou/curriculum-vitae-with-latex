@@ -37,7 +37,8 @@ services:
       - overleaf
 
   sharelatex:
-    image: sharelatex/sharelatex:6.1.1
+    build: .
+    image: sharelatex-full:6.1.1
     container_name: sharelatex
     restart: unless-stopped
     depends_on:
